@@ -1,0 +1,8 @@
+#content{
+  padding: 15px;
+}
+
+.App{
+  height: 100vh;
+  overflow: auto;
+}
