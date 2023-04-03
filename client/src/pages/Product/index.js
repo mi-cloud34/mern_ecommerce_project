@@ -3,48 +3,36 @@ import {Grid,Box,Flex, Button} from '@chakra-ui/react'
 import {useInfiniteQuery} from 'react-query'
 import { axiosProductList, fetchSearch, fetcSubCategory } from "../../api";
 import React, { useEffect } from "react";
-
-
-function Product({categoryId,subId,name}){
- 
-  //console.log("categoryid ve subid",ct_id,sb_id);
-    const { error,data,fetchNextPage,hasNextPage,isFetching,isFetchingNextPage, status}=
+import { useParams } from "react-router";
+import axios from "axios";
+function Product(){
+  const {categoryId}=useParams();
+  const {subId}=useParams();
+  //axiosProductList import to api.js
+ /*  export const axiosProductList=async({pageParams=1})=>{
+    const {data} = await axios.get(`${process.env.REACT_APP_BASE_ENDPOINT}/product?page=${pageParams}`)
+    return data;
+  }; */
+const { error,data,fetchNextPage,hasNextPage,isFetching,isFetchingNextPage, status}=
     useInfiniteQuery("products",axiosProductList,
     {
         getNextPageParam:((lastGroup,allGroup)=>{
            const morePageExits=lastGroup?.length===12;
            if (!morePageExits) {
-            return;
-           }
-          return allGroup.length+1;
-        })
+            return;}
+          return allGroup.length+1;})
     });
   useEffect(()=>{
-    const fetchOneCategory= async()=>{
-     if (categoryId&&subId) {
-      const {data}=await fetcSubCategory(categoryId,subId)
+    const fetchOneCategory= async ()=>{
+     if ((categoryId)&& subId) {
+const data=await axios.get(`${process.env.REACT_APP_BASE_ENDPOINT}/product/subcategory/${categoryId}/${subId}`)
         console.log("subdatam",data);
         console.log("categoryId",categoryId);
         console.log("subId",subId);
-     }
-    
-     };
-     const fetchSearc= async()=>{
-      if (name) {
-       const {data}=await fetchSearch(name)
-         console.log("searchdata",data);
-      }
-     
-      };
-      fetchSearc()
+     }};
      fetchOneCategory();
-  },[categoryId,subId]);
-   /*  const { isLoading, error, data } = useQuery('products', () =>
-     fetch('http://localhost:4000/product').then(res =>
-       res.json()
-     )
-   )
-  */
+  },[data]);
+  
    if (status==='loading') return 'Loading...'
    console.log("data",data);
    if (status==='error') return 'An error has occurred: ' + error.message

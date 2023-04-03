@@ -16,6 +16,7 @@ import Products from './pages/Admin/Products';
 import Homes from './pages/Admin/Home';
 import Home from './pages/Home';
 import {Suspense} from 'react';
+import Product from './pages/Product';
 function App() {
   return (
     <Suspense fallback={null}>
@@ -27,6 +28,7 @@ function App() {
       
       <Route path='/' exact element={<Home/>}/>
       <Route path='/product/:product_id' element={<ProductDetay/>}/>
+      <Route path='/product/subcategory/:categoryId/:subId' element={<Product/>}/>
       <Route path='/signin' element={<SignIn/>}/>
       <Route path='/auth' element={<SignUp/>}/>
       <Route path='/basket' element={<Basket/>}/>
