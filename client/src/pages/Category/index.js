@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCategory, fetchOneCategory, fetcSubCategory } from "../../api";
 import { ChevronRightIcon, ChevronDownIcon } from "@chakra-ui/icons";
@@ -12,6 +12,7 @@ import { Box, Button } from "@chakra-ui/react";
 function Category() {
   const [click, setClick] = useState(false);
   const [datam, setData] = useState("0");
+  const navigate=useNavigate();
   const addclass = () => {
     setClick(!click);
     console.log("add active");

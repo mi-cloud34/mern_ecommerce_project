@@ -26,9 +26,11 @@ function App() {
       <div id='content'>
       <Routes>
       
-      <Route path='/' exact element={<Home/>}/>
-      <Route path='/product/:product_id' element={<ProductDetay/>}/>
+      <Route path='/' exact element={<Home/>}>
       <Route path='/product/subcategory/:categoryId/:subId' element={<Product/>}/>
+      </Route>
+     
+     
       <Route path='/signin' element={<SignIn/>}/>
       <Route path='/auth' element={<SignUp/>}/>
       <Route path='/basket' element={<Basket/>}/>
