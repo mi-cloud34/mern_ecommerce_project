@@ -9,10 +9,12 @@ import {
   TableCaption,
   Text,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { fetchGetOrder } from "../../../api";
 
 function Orders() {
+  const { t } = useTranslation(["common"]);
   const { isLoading, error, data } = useQuery("admin:order", fetchGetOrder);
   console.log("merhaba mesut");
   if (isLoading) return "Loading...";
@@ -21,16 +23,16 @@ function Orders() {
   return (
     <div style={{ marginTop: 100 ,zIndex:4}}>
       <Text fontSize="2xl" p={5}>
-        Orders
+       {t("order")}
       </Text>
       
       <Table variant="simple">
-        <TableCaption>Şipariş Tablosu</TableCaption>
+        <TableCaption>{t("ordertable")}</TableCaption>
         <Thead>
           <Tr>
-            <Th>User</Th>
-            <Th>Addres</Th>
-            <Th isNumeric>Items</Th>
+            <Th>{t("user")}</Th>
+            <Th>{t("addres")}</Th>
+            <Th isNumeric>{t("item")}</Th>
           </Tr>
         </Thead>
         <Tbody>

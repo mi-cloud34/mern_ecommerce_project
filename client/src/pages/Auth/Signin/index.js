@@ -43,7 +43,7 @@ function SignIn() {
       <Flex align="center" width="full" justifyContent="center">
         <Box>
           <Box pt={10} textAlign="center">
-            <Heading>{t("singin")}</Heading>
+            <Heading>{t("signin")}</Heading>
           </Box>
           <Box my={4}> {formik.errors.general && (<Alert status="error">{formik.errors.general}</Alert>)}</Box>
           <Box my={5} textAlign="left">

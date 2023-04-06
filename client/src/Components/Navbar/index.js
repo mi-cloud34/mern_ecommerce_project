@@ -64,8 +64,8 @@ function Navbar() {
 							value={localStorage.getItem("i18nextLng")}
 							onChange={handleLanguageChange}
 						>
-							<option value="en">English</option>
-							<option  className={styles.flagtr} value="tr">Turkish</option>
+							<option value="en">{t("english")}</option>
+							<option  value="tr">{t("turkish")}</option>
 							
 						</select>
     <BellIcon alignItems="center" w={12} h={12} color="pink.600"/>
@@ -95,7 +95,7 @@ function Navbar() {
                 </Link>
                 )}
             <Link to="/profile">
-              <Button colorScheme="pink">Profil</Button>
+              <Button colorScheme="pink">{t("profile")}</Button>
             </Link>
            
           </>

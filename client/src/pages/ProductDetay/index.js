@@ -5,7 +5,9 @@ import { fetchProduct } from '../../api';
 import moment from 'moment'
 import ImageGalery from 'react-image-gallery'
 import { useBasket } from '../../contexts/BasketContext';
+import { useTranslation } from 'react-i18next';
 function ProductDetay(){
+    const { t } = useTranslation(["common"]);
     const {product_id}=useParams()
     const {addToBasket,items}=useBasket();
     const { isLoading,error,data}=useQuery(["product",product_id],()=>fetchProduct(product_id));
@@ -19,19 +21,19 @@ function ProductDetay(){
     console.log("find",items.find((item)=>item._id===product_id));
     const images=data.photos.map((url)=>({original:url}))
     return (
-        <div style={{zIndex:0, marginTop: 100,margin:"100px 600px",maxWidth:"100%"}}>
-            <Button pointerEvents={true} colorScheme={findBasketItem ? 'red':'green'} 
-            onClick={()=>addToBasket(data,findBasketItem)}>{findBasketItem?'Remove Basket':'Add to Basket'}
+        <Box style={{padding:"20px", zIndex:1, width:"500px",marginLeft:"35%",alignItems:"center"}}>
+            <Button variant="outline" mt="20px" ml="200px" pointerEvents={true} colorScheme={findBasketItem ? 'red':'black'} 
+            onClick={()=>addToBasket(data,findBasketItem)}>{findBasketItem?t("removebasket"):t("addbasket")}
             </Button>
-            <Text as="h2" fontSize="2xl">{data.title}</Text>
-            <Text>{moment(data.CreatedAt).format("DD/MM/YYYY")}</Text>
-            <p>{data.description}</p>
+            <Text mt="10px" ml="150px" as="h2" fontSize="2xl">{data.title}</Text>
+            <Text ml="150px">{moment(data.CreatedAt).format("DD/MM/YYYY")}</Text>
+            <p style={{marginLeft:"150px"}}>{data.description}</p>
             <Flex align="center">
-            <Box w="50%" align="center">
-   <ImageGalery items={images}/>
+            <Box w="100%" h="200px"align="center">
+             <ImageGalery  items={images}/>
             </Box>
             </Flex>
-        </div>
+        </Box>
     )
 }
 export default ProductDetay

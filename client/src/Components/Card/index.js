@@ -2,9 +2,12 @@ import {Box,Image ,Button} from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import moment from 'moment'
 import { useBasket } from '../../contexts/BasketContext';
+import { useTranslation } from 'react-i18next';
 function Card({item}){
     
     const {addToBasket,items}=useBasket();
+    const { t } = useTranslation(["common"]);
+
     const findBasketItem=items.find((basket_item)=>basket_item._id===item._id)
     return (
         <Box maxWidth="600px" textAlign="center"  borderWidth="1px" borderRadius="lg" p="3" overflow="hidden" >
@@ -22,7 +25,7 @@ function Card({item}){
             </Link>
             <Button colorScheme={findBasketItem ? 'red':'green'}  variant="solid" borderRadius={10}
              borderColor="black" border={10}
-            onClick={()=>addToBasket(item,findBasketItem)}>{findBasketItem?'Remove Basket':'Add to Basket'}
+            onClick={()=>addToBasket(item,findBasketItem)}>{findBasketItem?t("removebasket"):t("addbasket")}
             </Button>
         </Box>
     )

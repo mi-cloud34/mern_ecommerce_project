@@ -5,6 +5,7 @@
 	"login": "Login",
 	"register": "Register",
 	"addbasket": "Add To Basket",
+	"removebasket": "Remove Basket",
 	"password": "password",
 	"email": "email",
 	"logout": "LogOut",
@@ -25,5 +26,11 @@
     "edit":"Edit",
     "yes":"Yes",
     "no":"No",
-    "areyousure":"Are You Sure?"
+    "areyousure":"Are You Sure?",
+	"english":"English",
+	"turkish":"Turkish",
+	"ordertable":"Order Table",
+	"loadingpage":"Page Load",
+	"loadingmore":"Loading More Page",
+	"nothingmoreload":"Nothing More Load Page"
 }

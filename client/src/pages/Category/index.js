@@ -67,17 +67,19 @@ function Category() {
         
         
         }
-       {   ( click && (
-          <div className="dropdown-content">
-            {datam.sub_category.map((i) => (
-              <React.Fragment key={i._id}>
-               {<Link to={`/product/subcategory/${datam._id}/${i._id}`}><Button >{i.sub_categories}</Button></Link>}
-              </React.Fragment>
-            ))}
-          </div> ))
-            }
-       
-          </Box>
+ {  
+ (click && (
+  <div className="dropdown-content">
+    {datam.sub_category.map((i) => (
+      <React.Fragment key={i._id}>
+       {<Link to={`/product/subcategory/${datam._id}/${i._id}`}><Button >{i.sub_categories}</Button></Link>}
+      </React.Fragment>
+    ))}
+  </div> )
+  )
+    }
+ 
+</Box>
           
   );
 }
